@@ -12,13 +12,17 @@ import StarsComponent from './components/stars/stars';
 import { ProductService } from './services/product-service';
 import HomeComponent from './components/home/home';
 import ProductDetailComponent from './components/product-detail/product-detail';
+import {FilterPipe} from './pipes/filter-pipe';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
     imports: [ BrowserModule,
                RouterModule.forRoot([
                    { path: '', component: HomeComponent },
                    { path: 'products/:productId', component: ProductDetailComponent }
-               ])
+               ]),
+               FormsModule,
+               ReactiveFormsModule
      ],
     declarations: [ ApplicationComponent,
                     CarouselComponent,
@@ -28,7 +32,8 @@ import ProductDetailComponent from './components/product-detail/product-detail';
                     ProductDetailComponent,
                     ProductItemComponent,
                     SearchComponent,
-                    StarsComponent ],
+                    StarsComponent,
+                    FilterPipe ],
     providers: [ ProductService,
                  { provide: LocationStrategy, useClass: HashLocationStrategy }
     ],
